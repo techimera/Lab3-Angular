@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- include our dependency on angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <script src="avatar.js"></script>
+  <meta charset="utf-8">
+  <title>User Avatar Template</title>
+  <link rel="stylesheet" type="text/css" href="avatar.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+</head>
+
+<body>
+  <!--
+    1. ng-app='app' tells angular that everything within this div should function within
+    the scope of a declared angular module with the name of app.
+    2. ng-controller='mainCtrl' tells angular that the scope of this div should be handled
+    by a controller by the name of 'mainCtrl'. In a bigger application you will likely have
+    multiple controllers within one ng-app
+  -->
+  <div ng-app='app' ng-controller='mainCtrl' class ="myapp">
+    <form class='form' name='userForm' ng-submit='addNew(userForm)'>
+      <h1>Create new user</h1>
+      <input class = 'form-control' placeholder='Name' ng-model='userForm.name' />
+      <input class = 'form-control' placeholder='email' ng-model='userForm.email' />
+      <input class = 'form-control' placeholder='Image Url' ng-model='userForm.url' />
+      <button type='submit'>Add New</button>
+    </form>
+
+    <ul class='User-list' class="list-group">
+      <!--
+        ng-repeat loops through the users array bound to the scope of mainCtrl and gives
+        us access to the user object in each index so we can reference the user properties
+      -->
+      <li ng-repeat='user in users'>
+        <avatar user='user' />
+      </li>
+    </ul>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
